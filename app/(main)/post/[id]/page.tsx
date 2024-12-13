@@ -1,5 +1,7 @@
+import { DeletePostButton } from "@/components/deletePost-button"
 import { auth } from "@/lib/auth"
 import { getPost } from "@/lib/queries"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 
 export const revalidate = 60 * 15 // 15 minutes
@@ -27,7 +29,11 @@ export default async function PostPage ({
                         <span>{post.author.username}</span>
                         <h1 className="text-2xl font-bold">{post.title}</h1>
                     </div>
-                    {isAuthor && <button className="primary">Delete</button>}
+                    {isAuthor && ( 
+                    <div>
+                        <Link href={`/post/${post.id}/edit`} className='button-secondary'>Edit</Link>
+                        <DeletePostButton postId={post.id} />
+                    </div>)}
                 </header>
                 <p className="text-gray-500">{post.content}</p>
             </article>

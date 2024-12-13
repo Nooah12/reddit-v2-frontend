@@ -39,3 +39,15 @@ export const postPageSchema = z.object({
 })
 
 export type PostPageData = z.infer<typeof postPageSchema>
+
+export const homePagePostSchema = z.array(
+    z.object({
+        id: z.string(),
+        title: z.string(),
+        author: z.object({
+            username: z.string()
+        })
+    })
+)
+
+export type HomePagePostData = z.infer<typeof homePagePostSchema>
