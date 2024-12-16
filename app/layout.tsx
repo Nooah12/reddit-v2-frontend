@@ -1,8 +1,10 @@
-import { Albert_Sans } from 'next/font/google'
 import type { Metadata } from 'next'
 import { Toaster } from 'sonner'
 import { QueryClientProvider } from '@/providers/query-client-provider'
 import './globals.css'
+//import { config } from '@fortawesome/fontawesome-svg-core'
+//import '@fortawesome/fontawesome-svg-core/styles.css'
+//config.autoAddCss = false
 
 export const metadata: Metadata = {
   title: 'Reddit v2',

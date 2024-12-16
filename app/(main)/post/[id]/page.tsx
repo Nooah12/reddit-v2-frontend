@@ -1,4 +1,4 @@
-import { DeletePostButton } from "@/components/deletePost-button"
+import { DeletePostButton } from "@/components/buttons/deletePost-button"
 import { auth } from "@/lib/auth"
 import { getPost } from "@/lib/queries"
 import Link from "next/link"
@@ -23,19 +23,19 @@ export default async function PostPage ({
 
     return(
         <main className="main">
-            <article className="space-y-4">
-                <header className="flex items-start justify-between">
+            <article className="mb-4 md:mb-6 lg:mb-8">
+                <div className="flex justify-between items-center mb-4">
                     <div className="space-y-1">
-                        <span>{post.author.username}</span>
+                        <span className="text-sm block mb-1 font-normal text-zinc-600">{post.author.username}</span>
                         <h1 className="text-2xl font-bold">{post.title}</h1>
                     </div>
                     {isAuthor && ( 
-                    <div>
+                    <div className="flex gap-2">
                         <Link href={`/post/${post.id}/edit`} className='button-secondary'>Edit</Link>
                         <DeletePostButton postId={post.id} />
                     </div>)}
-                </header>
-                <p className="text-gray-500">{post.content}</p>
+                </div>
+                <p className="text-sm">{post.content}</p>
             </article>
         </main>
     )

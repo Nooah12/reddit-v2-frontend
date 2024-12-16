@@ -7,9 +7,10 @@ export default async function Home() {
     const posts = await getPosts()
 
     return (
-        <div>
+        <main className='main space-y-12'>
+            <h1 className='text-lg underline'>Latest posts</h1> 
             {!posts || posts.length === 0 ? (<p>No posts found</p>) : (
-                <section>
+                <section className='flex flex-col items-center gap-4'>
                     {posts.map(({ id, title, author}) => (
                         <Link key={id} href={`/post/${id}`}>
                             <span>{author.username}</span>
@@ -18,6 +19,6 @@ export default async function Home() {
                     ))}
                 </section>
             )}
-        </div>
+        </main>
     )
 }

@@ -2,12 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  background-color: rgb(24, 23, 23);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  min-height: 100%;
+}
+
 @layer base {
   .main {
     @apply my-6 w-full max-w-3xl px-6;
   }
+}
 
-  .header {
+/*   .header {
     @apply flex h-16 w-full items-center justify-between gap-4 px-4 py-2 md:px-20;
   }
 }
@@ -28,4 +45,6 @@
   .input {
     @apply w-full rounded-full border border-zinc-200 bg-white px-4 py-2 text-base text-zinc-800 outline-none placeholder:text-zinc-500;
   }
-}
+} */
+
+

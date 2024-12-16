@@ -1,5 +1,6 @@
 'use client'
 import { signUp } from "@/actions/sign-up"
+import { Button } from "@/components/buttons/button"
 import { FieldError } from "@/components/field-error"
 import { handleServerActionError, toastServerError } from "@/lib/error-handling"
 import { signUpSchema, SignUpValues } from "@/lib/schemas"
@@ -21,10 +22,10 @@ export const SignUpForm = () => {
 
     return (
         <form onSubmit={handleSubmit((values) => mutate(values))} className="flex w-full max-w-md flex-col gap-4">
-            <input {...register('username')} type="text" placeholder="username" className="input" />
+            <input {...register('username')} type="text" placeholder="username" className="p-2 border-2 rounded-xl" />
             <FieldError error={errors.password} />
-            <input {...register('password')} type="password" placeholder="password" className="input" />
-            <button type="submit" className="">Sign Up</button>
+            <input {...register('password')} type="password" placeholder="password" className="p-2 border-2 rounded-xl" />
+            <Button variant="primary" type="submit">Join</Button>
         </form>
     )
 }
