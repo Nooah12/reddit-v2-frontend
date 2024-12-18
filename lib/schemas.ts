@@ -14,7 +14,7 @@ export const logInSchema = z.object({
 
 export type LogInValues = z.infer<typeof logInSchema>
 
-export const postActionSchema = z.object({
+export const postActionSchema = z.object({ // edit / create Post - validera users data (skapa post)
     title: z.string().min(1, 'Title is required'),
     content: z.string().optional(),
 })
@@ -28,8 +28,8 @@ export const profileSchema = z.object({
 
 export type ProfileData = z.infer<typeof profileSchema>
 
-// behöver va samma som i getPost, post.ts
-export const postPageSchema = z.object({
+// getPost, posts.ts / queries.ts
+export const postPageSchema = z.object({ // edit post?
     id: z.string(),
     title: z.string(),
     content: z.string().optional(),
@@ -41,6 +41,7 @@ export const postPageSchema = z.object({
 
 export type PostPageData = z.infer<typeof postPageSchema>
 
+// getPosts
 export const homePagePostSchema = z.array(
     z.object({
         id: z.string(),
@@ -52,3 +53,16 @@ export const homePagePostSchema = z.array(
 )
 
 export type HomePagePostData = z.infer<typeof homePagePostSchema>
+
+export const commentSchema = z.object({
+    id: z.string(),
+    content: z.string().min(1, 'Comment is required'),
+    author: profileSchema,
+    //post: z.string(),
+})
+
+export type CommentData = z.infer<typeof commentSchema>
+
+// Schema for multiple comments (list of comments)
+export const commentListSchema = z.array(commentSchema);
+export type CommentListData = z.infer<typeof commentListSchema>;

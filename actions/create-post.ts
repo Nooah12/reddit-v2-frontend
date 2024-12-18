@@ -7,7 +7,7 @@ import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 
 export const createPost = async (data: PostValues) => {
-    const parsedData = postActionSchema.parse(data)
+    const parsedData = postActionSchema.parse(data) // när vi skickar data till databasen behövs parsedData
     const accessToken = await auth.getAccessToken()
 
     if (!accessToken) {
