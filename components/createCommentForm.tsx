@@ -1,24 +1,23 @@
 'use client'
-import { createComment } from "@/actions/create-comment";
-import { commentSchema } from "@/actions/schemas"
 import { Button } from "@/components/buttons/button"
 import { handleServerActionError, toastServerError } from "@/lib/error-handling";
-import { CommentData } from "@/lib/schemas";
+import { CommentAction, commentActionSchema, CommentData } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
 import { FieldError } from "./field-error";
+import { createComment } from "@/actions/create-comment";
 
 const CreateCommentForm = ({ postId }: { postId: string }) => {
     const { mutate } = useMutation({
-        mutationFn: async (values: CommentData) => {
-            handleServerActionError(await createComment(values))
+        mutationFn: async (values: CommentAction) => {
+            handleServerActionError(await createComment(values, postId))
         },
         onError: toastServerError
     })
 
-    const {register, handleSubmit, formState: {errors}} = useForm<CommentData>({
-        resolver: zodResolver(commentSchema)
+    const {register, handleSubmit, formState: {errors}} = useForm<CommentAction>({
+        resolver: zodResolver(commentActionSchema)
     })
     
     return (

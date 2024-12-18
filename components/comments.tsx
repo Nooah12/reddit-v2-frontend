@@ -52,10 +52,11 @@ type CommentsProps = {
 
 export default async function Comments({ postId }: CommentsProps) {
     const comments = await getComments(postId)
+    console.log(comments)
 
     return (
         <>
-            {/* <CreateCommentForm postId={""} /> */}
+            <CreateCommentForm postId={postId} />
             {!comments || comments.length === 0 ? (
                 <div className='flex mt-8'>
                     <div className='basis-12 mr-4'>

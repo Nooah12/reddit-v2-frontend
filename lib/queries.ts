@@ -34,13 +34,15 @@ export const getComments = async (postId: string) => {
     try {
         console.log('Fetching comments for post:', postId); // Add this
         const response = await client.get(`/posts/${postId}/comments`);
-        const { data, error } = commentSchema.safeParse(response.data);
+        const { data, error } = commentListSchema.safeParse(response.data);
+        console.log(response, error)
 
         if (error) {
             return null;
         }
         return data;
-    } catch {
+    } catch (error) {
+        console.error(error)
         return null;
     }
 };
