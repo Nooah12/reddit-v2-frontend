@@ -19,6 +19,11 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
     const user = await auth.getUser()
     const isAuthor = user && user.id === post.author.id
 
+    console.log("Post Author ID:", post.author.id);
+    console.log("Post ID:", post.id)
+    console.log("Current User ID:", user?.id);
+
+
     return(
         <main className="main">
             <article className="mb-4 md:mb-6 lg:mb-8">
@@ -40,7 +45,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
                     <p className="text-sm">{post.content}</p>
                 </div>
             </article>
-            <Comments postId={(await params).id} />
+            <Comments postId={(await params).id} postAuthorId={post.id} currentUserId={user?.id} />
         </main>
     )
 }

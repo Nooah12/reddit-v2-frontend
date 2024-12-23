@@ -45,13 +45,17 @@ export default async function Comments({ postId }: CommentsProps) {
 import { getComments } from "@/lib/queries"
 import { CommentData } from "@/lib/schemas";
 import CreateCommentForm from "./createCommentForm";
+import {DeleteCommentButton} from "./buttons/deleteComment-button";
 
-type CommentsProps = {  // ändra till funktionen ist
-    postId: string
+type CommentsProps = {
+    postId: string;
+    postAuthorId: string;
+    currentUserId: string | undefined;
 }
 
-export default async function Comments({ postId }: CommentsProps) {
+export default async function Comments({ postId, postAuthorId, currentUserId }: CommentsProps) {
     const comments = await getComments(postId)
+
     console.log(comments)
 
     return (
@@ -71,13 +75,38 @@ export default async function Comments({ postId }: CommentsProps) {
                     </div>
                 </div>
             ) : (
-                <section className='flex flex-col'>
+/*                 <section className='flex flex-col'>
                     {comments.map((comment: CommentData) => (
-                        <div key={comment.id} className="p-4 border rounded">
-                            <p className="text-sm text-gray-600">{comment.author.username}</p>
-                            <p className="text-base">{comment.content}</p>
+                        <div className="mb-4">
+                            <div key={comment.id} className="p-4 border rounded">
+                                <p className="text-sm font-bold text-gray-600">{comment.author.username}</p>
+                                {isCommentAuthor || isPostAuthor && <DeleteCommentButton commentId={id} />}
+                                <p className="text-base">{comment.content}</p>
+                            </div>
                         </div>
+
                     ))}
+                </section> */
+
+                <section className="flex flex-col">
+                    {comments.map((comment: CommentData) => {
+                        const isCommentAuthor = comment.author.id === currentUserId;
+                        const isPostAuthor = postAuthorId === currentUserId;
+
+                        return (
+                            <div key={comment.id} className="mb-4">
+                                <div className="rounded-2xl p-1 shadow-lg">
+                                    <div className="flex justify-between">
+                                        <p className="text-sm font-bold text-gray-600">{comment.author.username}</p>
+                                        {(isCommentAuthor || isPostAuthor) && (
+                                            <DeleteCommentButton commentId={comment.id} />
+                                        )}
+                                    </div>
+                                    <p className="text-sm text-gray-600 my-1">{comment.content}</p>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </section>
             )}
         </>
