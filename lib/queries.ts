@@ -45,23 +45,4 @@ export const getComments = async (postId: string) => {
         console.error(error)
         return null;
     }
-};
-
-
-/* export const getComments = async (postId: string): Promise<CommentData[]> => {
-    try {
-        const response = await client.get(`/posts/${postId}/comments`);
-        const { data, error } = commentListSchema.safeParse(response.data);
-        
-        if (error) {
-            console.error("Error parsing comments:", error);
-            return [];
-        }
-
-        return data;
-    } catch (err) {
-        console.error("Failed to fetch comments:", err);
-        return [];
-    }
-};
- */
+}

@@ -3,6 +3,8 @@
 import { deletePost } from "@/actions/delete-post"
 import { handleServerActionError, toastServerError } from "@/lib/error-handling"
 import { useMutation } from "@tanstack/react-query"
+import { Button } from "./button"
+import { toast } from 'sonner'
 
 
 export const DeletePostButton = ({postId}: {postId: string}) => {
@@ -11,9 +13,11 @@ export const DeletePostButton = ({postId}: {postId: string}) => {
             handleServerActionError(await deletePost(postId))
         },
         onError: toastServerError,
+        onMutate: () => toast.loading('Deleting post..'),
+        onSuccess: () => toast.success('Your post was deleted!'),
+        onSettled: () => toast.dismiss()
     })
 
-    return <button onClick={() => mutate()} className="button-secondary">Delete</button>
-
+    return <Button onClick={() => mutate()} variant='primary'>Delete</Button>
 
 }

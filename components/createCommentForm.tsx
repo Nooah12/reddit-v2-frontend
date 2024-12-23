@@ -13,10 +13,11 @@ const CreateCommentForm = ({ postId }: { postId: string }) => {
         mutationFn: async (values: CommentAction) => {
             handleServerActionError(await createComment(values, postId))
         },
-        onError: toastServerError
+        onError: toastServerError,
+        onSuccess: () => reset()
     })
 
-    const {register, handleSubmit, formState: {errors}} = useForm<CommentAction>({
+    const {register, handleSubmit, reset, formState: {errors}} = useForm<CommentAction>({
         resolver: zodResolver(commentActionSchema)
     })
     

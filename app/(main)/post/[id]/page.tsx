@@ -1,3 +1,4 @@
+import { Button } from "@/components/buttons/button"
 import { DeletePostButton } from "@/components/buttons/deletePost-button"
 import Comments from "@/components/comments"
 import { auth } from "@/lib/auth"
@@ -21,21 +22,25 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
     return(
         <main className="main">
             <article className="mb-4 md:mb-6 lg:mb-8">
-                <div className="flex justify-between items-center mb-4">
-                    <div className="space-y-1">
-                        <span className="text-sm block mb-1 font-normal text-zinc-600">{post.author.username}</span>
-                        <h1 className="text-2xl font-bold">{post.title}</h1>
+                <div className="p-2 border rounded-xl bg-white">
+                    <div className="flex justify-between items-center mb-4">
+                        <div className="space-y-1">
+                            <span className="text-sm block mb-1 font-normal text-zinc-600">{post.author.username}</span>
+                            <h1 className="text-2xl font-bold">{post.title}</h1>
+                        </div>
+                        {isAuthor && (
+                          <div className="flex gap-2">
+                            <Link href={`/post/${post.id}/edit`}>
+                                <Button variant="secondary">Edit</Button>
+                            </Link>
+                            <DeletePostButton postId={post.id} />
+                          </div>
+                        )}
                     </div>
-                    {isAuthor && ( 
-                    <div className="flex gap-2">
-                        <Link href={`/post/${post.id}/edit`} className='button-secondary'>Edit</Link>
-                        <DeletePostButton postId={post.id} />
-                    </div>)}
+                    <p className="text-sm">{post.content}</p>
                 </div>
-                <p className="text-sm">{post.content}</p>
-
-                <Comments postId={(await params).id} />
             </article>
+            <Comments postId={(await params).id} />
         </main>
     )
 }

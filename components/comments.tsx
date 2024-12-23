@@ -46,7 +46,7 @@ import { getComments } from "@/lib/queries"
 import { CommentData } from "@/lib/schemas";
 import CreateCommentForm from "./createCommentForm";
 
-type CommentsProps = {
+type CommentsProps = {  // ändra till funktionen ist
     postId: string
 }
 
