@@ -32,7 +32,6 @@ export const postPageSchema = z.object({ // edit post?
 /*     createdAt: z.string(),
     updatedAt: z.string(), */
     author: profileSchema,
-    // comments
 })
 export type PostPageData = z.infer<typeof postPageSchema>
 

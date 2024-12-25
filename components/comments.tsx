@@ -56,7 +56,7 @@ type CommentsProps = {
 export default async function Comments({ postId, postAuthorId, currentUserId }: CommentsProps) {
     const comments = await getComments(postId)
 
-    console.log(comments)
+    //console.log(comments)
 
     return (
         <>
@@ -75,19 +75,6 @@ export default async function Comments({ postId, postAuthorId, currentUserId }: 
                     </div>
                 </div>
             ) : (
-/*                 <section className='flex flex-col'>
-                    {comments.map((comment: CommentData) => (
-                        <div className="mb-4">
-                            <div key={comment.id} className="p-4 border rounded">
-                                <p className="text-sm font-bold text-gray-600">{comment.author.username}</p>
-                                {isCommentAuthor || isPostAuthor && <DeleteCommentButton commentId={id} />}
-                                <p className="text-base">{comment.content}</p>
-                            </div>
-                        </div>
-
-                    ))}
-                </section> */
-
                 <section className="flex flex-col">
                     {comments.map((comment: CommentData) => {
                         const isCommentAuthor = comment.author.id === currentUserId;
@@ -99,7 +86,7 @@ export default async function Comments({ postId, postAuthorId, currentUserId }: 
                                     <div className="flex justify-between">
                                         <p className="text-sm font-bold text-gray-600">{comment.author.username}</p>
                                         {(isCommentAuthor || isPostAuthor) && (
-                                            <DeleteCommentButton commentId={comment.id} />
+                                            <DeleteCommentButton commentId={comment.id} postId={postId} />
                                         )}
                                     </div>
                                     <p className="text-sm text-gray-600 my-1">{comment.content}</p>

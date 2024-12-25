@@ -8,10 +8,10 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { handleServerActionError, toastServerError } from '@/lib/error-handling'
 
-export const DeleteCommentButton = ({commentId}: {commentId: string}) => {
+export const DeleteCommentButton = ({commentId, postId}: {commentId: string, postId: string}) => {
     const {mutate} = useMutation({ 
-        mutationFn: async() => {
-          handleServerActionError(await deleteComment(commentId))
+        mutationFn: async () => {
+          handleServerActionError(await deleteComment(commentId, postId))
         },
         onError: toastServerError,
     })
