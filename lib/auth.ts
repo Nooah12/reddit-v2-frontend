@@ -35,8 +35,8 @@ const getUser = async () => {
             }
         })
 
-        const {data, error} = profileSchema.safeParse(response.data) // parse kastar error safeParse returnerar error
-        if (error) {
+        const {data} = profileSchema.safeParse(response.data) // parse kastar error safeParse returnerar error
+        if (!data) {
             return null
         }
 
