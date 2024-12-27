@@ -85,9 +85,9 @@ export default async function Comments({ postId, postAuthorId, currentUserId }: 
                                 <div className="rounded-2xl p-1 shadow-lg">
                                     <div className="flex justify-between">
                                         <p className="text-sm font-bold text-gray-600">{comment.author.username}</p>
-                                        {(isCommentAuthor || isPostAuthor) && (
+                                        {(isCommentAuthor || isPostAuthor) && 
                                             <DeleteCommentButton commentId={comment.id} postId={postId} />
-                                        )}
+                                        }
                                     </div>
                                     <p className="text-sm text-gray-600 my-1">{comment.content}</p>
                                 </div>

@@ -45,7 +45,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
                     <p className="text-sm">{post.content}</p>
                 </div>
             </article>
-            <Comments postId={(await params).id} postAuthorId={post.id} currentUserId={user?.id} />
+            <Comments postId={id} postAuthorId={post.author.id} currentUserId={user?.id} />
         </main>
     )
 }
