@@ -9,7 +9,7 @@ import { useMutation } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
 
 export const SignUpForm = () => {
-    const { mutate, isPending } = useMutation({
+    const { mutate} = useMutation({
         mutationFn: async (values: SignUpValues) => {
             handleServerActionError(await signUp(values)) // gör om objekt-error till riktiga error?
         },

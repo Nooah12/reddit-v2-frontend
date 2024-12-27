@@ -2,6 +2,7 @@ import { getComments } from "@/lib/queries"
 import { CommentData } from "@/lib/schemas";
 import CreateCommentForm from "./createCommentForm";
 import {DeleteCommentButton} from "./buttons/deleteComment-button";
+import Image from "next/image";
 
 type CommentsProps = {
     postId: string;
@@ -18,7 +19,7 @@ export default async function Comments({ postId, postAuthorId, currentUserId }: 
             {!comments || comments.length === 0 ? (
                 <div className='flex mt-8'>
                     <div className='basis-12 mr-4'>
-                        <img src="/thinking-snoo.png" alt="snoo-logo" className='w-auto' />
+                        <Image src="/thinking-snoo.png" alt="snoo-logo" className='w-auto' width={42} height={42} />
                     </div>
                     <div className='basis-full'>
                         <p className='text-lg font-semibold mb-4'>Be the first to comment</p>

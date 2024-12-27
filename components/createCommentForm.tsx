@@ -1,7 +1,7 @@
 'use client'
 import { Button } from "@/components/buttons/button"
 import { handleServerActionError, toastServerError } from "@/lib/error-handling";
-import { CommentAction, commentActionSchema, CommentData } from "@/lib/schemas";
+import { CommentAction, commentActionSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
