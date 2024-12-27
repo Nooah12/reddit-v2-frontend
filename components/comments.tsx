@@ -24,7 +24,7 @@ export default async function Comments({ postId, postAuthorId, currentUserId }: 
                     <div className='basis-full'>
                         <p className='text-lg font-semibold mb-4'>Be the first to comment</p>
                         <p className='text-sm font-light'>
-                            Nobody's responded to this post yet.<br />
+                            Nobody&apos;s responded to this post yet.<br />
                             Add your thoughts and get the conversation going.
                         </p>
                     </div>
