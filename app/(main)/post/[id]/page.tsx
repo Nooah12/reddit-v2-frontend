@@ -6,7 +6,7 @@ import { getPost } from "@/lib/queries"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-export const revalidate = 60 * 15 // 15 minutes
+export const revalidate = 900 // 15 minutes
 
 export default async function PostPage({ params }: { params: Promise<{ id: string } >}) {
     const id = (await params).id
