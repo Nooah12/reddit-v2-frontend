@@ -17,7 +17,7 @@ export const logIn = async (data: LogInValues): Promise<ServerActionResponse> =>
         await auth.setAccessToken(response.data.accessToken)
 
     } catch (error) {
-        return handleAxiosError(error) // kollar ifall error från backend (axios)
+        return handleAxiosError(error)
     }
 
     redirect('/')

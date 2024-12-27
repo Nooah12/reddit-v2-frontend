@@ -20,11 +20,9 @@ export const createComment = async (data: CommentAction, postId: string) => {
             }
         })
 
-        revalidatePath(`/`)
+        revalidatePath(`/post/${postId}`)
         return response.data
     } catch (error) {
         return handleAxiosError(error)
     }
-
-    
 }

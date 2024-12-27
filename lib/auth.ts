@@ -40,7 +40,7 @@ const getUser = async () => {
             return null
         }
 
-        return data // error o data beroende av varann?
+        return data
 
     } catch (error) {
         return null

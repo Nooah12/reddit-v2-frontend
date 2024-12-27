@@ -22,7 +22,7 @@ export const handleAxiosError = (error: unknown): ServerActionResponse => {
     return { error: error.response?.data.message || defaultErrorMessage } // om inte axios error så default "backup" error för user
 }
 
-export const toastServerError = (error: Error) => { // redirect error?
+export const toastServerError = (error: Error) => {
     if (!isRedirectError(error)) {
         toast.error(error.message)
     }

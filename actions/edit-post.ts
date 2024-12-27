@@ -26,5 +26,5 @@ export const editPost = async ({data, postId}: {data: PostValues, postId: string
     }
 
     revalidatePath('/')
-    redirect(`/post/${postId}`) //  /posts med s ??
+    redirect(`/post/${postId}`)
 }

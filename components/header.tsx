@@ -10,25 +10,6 @@ import { LogOutButton } from './buttons/logoutButton';
 export const Header = async () => {
   const user = await auth.getUser()
   return (
-/*     <header className='w-full flex justify-between items-center px-4 py-4 gap-4 xl:px-20 border'>
-      <Link href='/' className='text-2xl font-bold'>
-        reddit
-      </Link>
-      {user ? (
-        <div className='flex gap-4'>
-          <Link href={'/create'} className='button-primary'>
-            Create
-          </Link>
-        <LogOutButton />
-        </div>
-      ) : (
-        <Link href='/auth/log-in' className='button-primary'>
-          Log in
-        </Link>
-      )}
-    </header> */
-
-
     <header className='w-full flex justify-between items-center px-4 py-4 gap-4 xl:px-20 border'>
       <Link href='/' className='text-2xl font-bold flex items-center'>
         {<FontAwesomeIcon icon={faReddit} style={{color: "#f53629",}} />}

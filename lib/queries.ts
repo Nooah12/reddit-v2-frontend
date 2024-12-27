@@ -1,5 +1,5 @@
 import { client } from "./client"
-import { CommentData, commentListSchema, commentSchema, homePagePostSchema, postPageSchema } from "./schemas"
+import { commentListSchema, homePagePostSchema, postPageSchema } from "./schemas"
 
 export const getPosts = async () => {
     try {

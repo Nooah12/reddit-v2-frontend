@@ -30,7 +30,6 @@ const CreateCommentForm = ({ postId }: { postId: string }) => {
                 rows={4}
             />
             <FieldError error={errors.content} />
-            {/* <div className="md:flex md:justify-between items-center"> */}
             <div className="absolute right-2 top-[67%] md:top-[72%] -translate-y-1/2">
                 <Button className="w-20" type="submit" variant="secondary">Comment</Button>
             </div>

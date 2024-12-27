@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form"
 export const LogInForm = () => {
     const { mutate, isPending } = useMutation({
         mutationFn: async (values: LogInValues) => {
-            handleServerActionError(await logIn(values)) // gör om objekt-error till riktiga error?
+            handleServerActionError(await logIn(values))
         }
     })
 
@@ -22,8 +22,9 @@ export const LogInForm = () => {
     return (
         <form onSubmit={handleSubmit((values) => mutate(values))} className="flex w-full max-w-md flex-col gap-4">
             <input {...register('username')} type="text" placeholder="username" className="p-2 border-2 rounded-xl" />
-            <FieldError error={errors.password} />
+            <FieldError error={errors.username} />
             <input {...register('password')} type="password" placeholder="password" className="p-2 border-2 rounded-xl" />
+            <FieldError error={errors.password} />
             <Button variant="primary" type="submit">{isPending ? 'Logging in...' : 'Login'}</Button>
         </form>
     )

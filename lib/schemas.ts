@@ -51,7 +51,6 @@ export const commentSchema = z.object({
     id: z.string(),
     content: z.string().min(1, 'Comment is required'),
     author: profileSchema,
-    //post: z.string().optional(),
 })
 export type CommentData = z.infer<typeof commentSchema>
 
