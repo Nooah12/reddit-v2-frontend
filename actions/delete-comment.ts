@@ -12,14 +12,14 @@ export const deleteComment = async (commentId: string, postId: string) => {
     }
 
      try {
-        const response = await client.delete(`/comments/${postId}/${commentId}`, {
+        await client.delete(`/comments/${postId}/${commentId}`, {
             headers: {
                 Authorization: `Bearer ${accessToken.value}`
             }
         })
 
         revalidatePath(`/post/${postId}`)
-    } catch (error) {
+    } catch {
         return {error: 'Failed to delete comment'}
     }
 }

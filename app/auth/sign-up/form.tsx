@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form"
 export const SignUpForm = () => {
     const { mutate} = useMutation({
         mutationFn: async (values: SignUpValues) => {
-            handleServerActionError(await signUp(values)) // gör om objekt-error till riktiga error?
+            handleServerActionError(await signUp(values))
         },
         onError: toastServerError,
     })

@@ -18,7 +18,7 @@ export const deletePost = async (postId: string) => {
                 Authorization: `Bearer ${accessToken.value}`
             }
         })
-    } catch (error) {
+    } catch {
         return {error: 'Failed to delete post'}
     }
 
