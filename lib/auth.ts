@@ -42,7 +42,7 @@ const getUser = async () => {
 
         return data
 
-    } catch (error) {
+    } catch {
         return null
     }
 }
