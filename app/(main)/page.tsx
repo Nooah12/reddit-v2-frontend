@@ -12,9 +12,9 @@ export default async function Home() {
             {!posts || posts.length === 0 ? (<p>No posts found</p>) : (
                 <section className='flex flex-col items-center gap-4'>
                     {posts.map(({ id, title, author}) => (
-                        <Link key={id} href={`/post/${id}`}>
-                            <span>{author.username}</span>
-                            <h2>{title}</h2>
+                        <Link key={id} href={`/post/${id}`} className='flex w-full flex-col rounded-3xl bg-white p-4'>
+                            <span className='text-zinc-600 text-xs md:text-sm'>{author.username}</span>
+                            <h2 className='text-lg font-bold'>{title}</h2>
                         </Link>
                     ))}
                 </section>
